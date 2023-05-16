@@ -36,6 +36,7 @@ export default function Login({projectId}) {
                     account.createOAuth2Session('github');
                 }}>
                     <AiFillGithub/>
+                    <hr className={styles.innerDivider}/>
                     <div className={styles.loginButtonTitle}>
                         Login with GitHub
                     </div>
@@ -44,6 +45,7 @@ export default function Login({projectId}) {
                     account.createOAuth2Session('google');
                 }}>
                     <AiFillGoogleCircle/>
+                    <hr className={styles.innerDivider}/>
                     <div className={styles.loginButtonTitle}>
                         Login with Google
                     </div>

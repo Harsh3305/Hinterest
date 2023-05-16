@@ -4,7 +4,7 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-
+  --highlight-color: #735DF0;
   --primary-color: #e30000;
   --gradient-primary: linear-gradient(90deg, #735DF0, #FA4197, #0BCDFA);
 
