@@ -5,6 +5,7 @@ import {AiFillGithub, AiFillGoogleCircle} from "react-icons/ai";
 import { Client, Account, ID } from "appwrite";
 
 export default function Login({hostname, projectId}) {
+    console.log(`hostname: ${hostname}`);
     const client = new Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(projectId);
