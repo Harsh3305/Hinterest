@@ -6,16 +6,16 @@ import {AiOutlineLogin, AiOutlineLogout} from "react-icons/ai";
 export default function Header({account}) {
     const [token, setToken] = useState("");
     const [refresh, setRefresh] = useState(true);
-    // account.createJWT()
-    //     .then((result)=> {
-    //         setToken(result.jwt)
-    //     })
-    //     .catch((_)=>{
-    //         setToken("")
-    //     })
-    //     .finally(()=>{
-    //         setRefresh(false)
-    //     })
+    account.createJWT()
+        .then((result)=> {
+            setToken(result.jwt)
+        })
+        .catch((_)=>{
+            setToken("")
+        })
+        .finally(()=>{
+            setRefresh(false)
+        })
 
     console.log(token)
     return <div className={styles.main}>
