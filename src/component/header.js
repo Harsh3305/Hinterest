@@ -2,6 +2,7 @@ import styles from "@/styles/component/Header.module.css";
 import Link from "next/link";
 import {useEffect, useState} from "react";
 import {AiOutlineLogin, AiOutlineLogout} from "react-icons/ai";
+import {toast} from "react-toastify";
 
 export default function Header({account}) {
     const [token, setToken] = useState("");
@@ -50,6 +51,13 @@ export default function Header({account}) {
                                 account
                                     .deleteSession("current")
                                     .finally(()=>{
+                                        toast(
+                                            'Logout Successfully',
+                                            { hideProgressBar: false,
+                                                autoClose: 2000,
+                                                type: 'success'
+                                            }
+                                        );
                                         setRefresh(true)
                                     })
                             }}

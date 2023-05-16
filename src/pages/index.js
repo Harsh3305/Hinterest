@@ -1,10 +1,9 @@
 import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import styles from "@/styles/Home.module.css"
 
 export default function Home({account}) {
   return (
-    <div>
+    <div className={styles.main}>
       Home Page
     </div>
   )
