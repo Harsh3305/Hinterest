@@ -2,16 +2,8 @@ import styles from "@/styles/Login.module.css"
 import Image from "next/image";
 import Typewriter from "typewriter-effect";
 import {AiFillGithub, AiFillGoogleCircle} from "react-icons/ai";
-import { Client, Account, ID } from "appwrite";
 
-export default function Login({hostname, projectId}) {
-    console.log(`hostname: ${hostname}`);
-    const client = new Client()
-        .setEndpoint('https://cloud.appwrite.io/v1')
-        .setProject(projectId);
-    const account = new Account(client);
-    account.get().then(console.log)
-        .catch(console.error)
+export default function Login({hostname, account, protocol}) {
     return <div className={styles.main}>
         <div>
             <Image
@@ -36,8 +28,8 @@ export default function Login({hostname, projectId}) {
                 <button className={styles.loginButton} onClick={()=> {
                     account.createOAuth2Session(
                         'github',
-                        `https://${hostname}/`,
-                        `https://${hostname}/login`
+                        `${protocol}${hostname}/`,
+                        `${protocol}${hostname}/login`
                     );
                 }}>
                     <AiFillGithub/>
@@ -49,8 +41,8 @@ export default function Login({hostname, projectId}) {
                 <button className={styles.loginButton} onClick={()=> {
                     account.createOAuth2Session(
                         'google',
-                        `https://${hostname}/`,
-                        `https://${hostname}/login`
+                        `${protocol}${hostname}/`,
+                        `${protocol}${hostname}/login`
                     );
                 }}>
                     <AiFillGoogleCircle/>
@@ -64,10 +56,11 @@ export default function Login({hostname, projectId}) {
     </div>
 }
 export async function getStaticProps() {
+    const protocol = "http://";
     return {
         props: {
-            hostname: process.env.VERCEL_URL,
-            projectId: process.env.PROJECT_ID
+            protocol: protocol,
+            hostname: process.env.VERCEL_URL
         }
     }
 }
