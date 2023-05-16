@@ -33,7 +33,11 @@ export default function Login({projectId}) {
             </div>
             <div className={styles.loginButtonContainer}>
                 <button className={styles.loginButton} onClick={()=> {
-                    account.createOAuth2Session('github');
+                    account.createOAuth2Session(
+                        'github',
+                        "/",
+                        "/login"
+                    );
                 }}>
                     <AiFillGithub/>
                     <hr className={styles.innerDivider}/>
@@ -42,7 +46,11 @@ export default function Login({projectId}) {
                     </div>
                 </button>
                 <button className={styles.loginButton} onClick={()=> {
-                    account.createOAuth2Session('google');
+                    account.createOAuth2Session(
+                        'google',
+                        "/",
+                        "/login"
+                    );
                 }}>
                     <AiFillGoogleCircle/>
                     <hr className={styles.innerDivider}/>
@@ -54,7 +62,7 @@ export default function Login({projectId}) {
         </div>
     </div>
 }
-export async function getStaticProps(context) {
+export async function getStaticProps() {
     return {
         props: {
             projectId: process.env.PROJECT_ID
