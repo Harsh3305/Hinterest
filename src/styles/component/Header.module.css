@@ -49,6 +49,7 @@
     width: 100%;
 }
 .header_button {
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     align-items: center;
