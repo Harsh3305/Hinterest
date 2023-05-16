@@ -48,10 +48,14 @@
 }
 .loginButton:hover {
     box-shadow: var(--box-shadow-hover);
+    color: var(--highlight-color);
 }
 .loginButtonTitle {
     margin-left: 10%;
     font-size: xx-large;
+}
+.innerDivider {
+    height: 100%;
 }
 @keyframes background_text_color_animation {
     0% {
