@@ -11,6 +11,9 @@ export default function Home({projectId}) {
       .setEndpoint('https://cloud.appwrite.io/v1')
       .setProject(projectId);
   const account = new Account(client);
+  account.createJWT()
+      .then(console.log)
+      .catch(console.error)
   account.get()
       .then(console.log)
       .catch(console.warn)
