@@ -2,10 +2,21 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import {Account, Client} from "appwrite";
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home({projectId}) {
+  const client = new Client()
+      .setEndpoint('https://cloud.appwrite.io/v1')
+      .setProject(projectId);
+  const account = new Account(client);
+  account.createJWT()
+      .then(console.log)
+      .catch(console.error)
+  account.get()
+      .then(console.log)
+      .catch(console.warn)
   return (
     <>
       <Head>
@@ -111,4 +122,12 @@ export default function Home() {
       </main>
     </>
   )
+}
+export async function getStaticProps() {
+  return {
+    props: {
+      hostname: process.env.VERCEL_URL,
+      projectId: process.env.PROJECT_ID
+    }
+  }
 }
