@@ -4,7 +4,7 @@ import Typewriter from "typewriter-effect";
 import {AiFillGithub, AiFillGoogleCircle} from "react-icons/ai";
 import { Client, Account, ID } from "appwrite";
 
-export default function Login({projectId}) {
+export default function Login({hostname, projectId}) {
     const client = new Client()
         .setEndpoint('https://cloud.appwrite.io/v1')
         .setProject(projectId);
@@ -35,8 +35,8 @@ export default function Login({projectId}) {
                 <button className={styles.loginButton} onClick={()=> {
                     account.createOAuth2Session(
                         'github',
-                        "/",
-                        "/login"
+                        `${hostname}/`,
+                        `${hostname}/login`
                     );
                 }}>
                     <AiFillGithub/>
@@ -48,8 +48,8 @@ export default function Login({projectId}) {
                 <button className={styles.loginButton} onClick={()=> {
                     account.createOAuth2Session(
                         'google',
-                        "/",
-                        "/login"
+                        `${hostname}/`,
+                        `${hostname}/login`
                     );
                 }}>
                     <AiFillGoogleCircle/>
@@ -65,6 +65,7 @@ export default function Login({projectId}) {
 export async function getStaticProps() {
     return {
         props: {
+            hostname: process.env.VERCEL_URL,
             projectId: process.env.PROJECT_ID
         }
     }
