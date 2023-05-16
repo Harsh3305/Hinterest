@@ -49,8 +49,8 @@ export default function Login({hostname, projectId}) {
                 <button className={styles.loginButton} onClick={()=> {
                     account.createOAuth2Session(
                         'google',
-                        `${hostname}/`,
-                        `${hostname}/login`
+                        `https://${hostname}/`,
+                        `https://${hostname}/login`
                     );
                 }}>
                     <AiFillGoogleCircle/>
