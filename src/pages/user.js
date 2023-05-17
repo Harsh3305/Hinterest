@@ -3,7 +3,12 @@ import {useEffect, useState} from "react";
 import {getAccount} from "@/service/db_operation";
 import {getRequest} from "@/service/networking";
 
-export default function User({jwt}) {
+export default function User({account}) {
+    const [jwt, setJwt] = useState(undefined);
+    account.createJWT()
+        .then(r => setJwt(r.jwt))
+        .catch(_=>setJwt(undefined))
+
     if (jwt === undefined || jwt === null) {
         Router().push("/404")
     }
@@ -24,20 +29,4 @@ export default function User({jwt}) {
     return <div>
         {user.email}
     </div>
-}
-export async function getServerSideProps(content) {
-    const account = getAccount()
-    try{
-        const jwt = (await account.createJWT()).jwt;
-        return {
-            props: {
-                jwt: jwt
-            }
-        }
-    }
-    catch (_) {
-        return {
-            props: {}
-        }
-    }
 }
