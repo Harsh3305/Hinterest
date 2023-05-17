@@ -6,16 +6,12 @@ import {toast} from "react-toastify";
 
 export default function Header({account}) {
     const [token, setToken] = useState("");
-    const [refresh, setRefresh] = useState(true);
     account.createJWT()
         .then((result)=> {
             setToken(result.jwt)
         })
         .catch((_)=>{
             setToken("")
-        })
-        .finally(()=>{
-            setRefresh(false)
         })
 
     console.log(token)
@@ -58,7 +54,6 @@ export default function Header({account}) {
                                                 type: 'success'
                                             }
                                         );
-                                        setRefresh(true)
                                     })
                             }}
                         >
