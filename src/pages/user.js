@@ -1,4 +1,4 @@
-import {Router} from "next/router";
+import { useRouter } from 'next/router';
 import {useEffect, useState} from "react";
 import {getAccount} from "@/service/db_operation";
 import {getRequest} from "@/service/networking";
@@ -10,7 +10,7 @@ export default function User({account}) {
         .catch(_=>setJwt(undefined))
 
     if (jwt === undefined || jwt === null) {
-        Router().push("/404")
+        useRouter().push("/404")
     }
     const [user, setUser] = useState(undefined);
     function getUserDetails() {
