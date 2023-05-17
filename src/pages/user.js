@@ -27,10 +27,17 @@ export default function User({jwt}) {
 }
 export async function getServerSideProps(content) {
     const account = getAccount()
-    const jwt = (await account.createJWT()).jwt;
-    return {
-        props: {
-            jwt: jwt
+    try{
+        const jwt = (await account.createJWT()).jwt;
+        return {
+            props: {
+                jwt: jwt
+            }
+        }
+    }
+    catch (_) {
+        return {
+            props: {}
         }
     }
 }
